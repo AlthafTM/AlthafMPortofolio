@@ -1,2 +1,2 @@
 # AlthafMPortofolio
-My Game Dev Portofolio.
+My Game Dev Portofolio
