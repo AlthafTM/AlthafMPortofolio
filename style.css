@@ -1,18 +1,16 @@
 @font-face {
     font-family: "NeueMachina-Ultrabold";
-    font-style: normal;
-    font-format: opentype;
+    src: url("./public/fonts/neuemachina-ultrabold.otf") format("opentype");
     font-weight: 800;
-    src: url("public/fonts/neuemachina-ultrabold.otf") ;
-  }
-   
-  @font-face {
-    font-family: "NeueMachina-Regular";
     font-style: normal;
-    font-format: opentype;
+}
+
+@font-face {
+    font-family: "NeueMachina-Regular";
+    src: url("./public/fonts/neuemachina-regular.otf") format("opentype");
     font-weight: 400;
-    src: url("public/fonts/neuemachina-regular.otf") ;
-  }
+    font-style: normal;
+}
    
   :root {
     --dl-layout-size-large: 144px;
