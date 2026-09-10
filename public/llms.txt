@@ -1,7 +1,12 @@
-# WebPorto/Profile
+# Althaf M. — Game Developer Portfolio
 
-> 
+> Personal portfolio of Althaf Tristan Maheswara, a Unity game developer.
 
 ## Pages
 
-- [exported project](https://webportoprofile-3w2pbf.teleporthq.site)
+- [Home](./index.html): About, game projects, programming languages, and socials.
+- [Game detail](./game.html?id=bounce): Each game has its own page with screenshots, dev time, budget, tools, and lessons learned.
+
+## Data
+
+- [games.js](./data/games.js): All site content is modular and rendered from this file.

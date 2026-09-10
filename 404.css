@@ -1,40 +1,78 @@
 .not-found-container1 {
-    width: 100%;
-    display: flex;
-    overflow: auto;
-    min-height: 100vh;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-  }
-   
-  .not-found-container2 {
-    display: flex;
-    position: relative;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-  }
-   
-  .not-found-text2 {
-    color: rgb(38, 38, 38);
-    font-size: 252px;
-    margin-top: -20px;
-    font-weight: 900;
-    margin-bottom: -20px;
-    letter-spacing: -20px;
-  }
-   
-  .not-found-container3 {
-    width: 421px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-  }
-   
-  .not-found-text3 {
-    text-align: center;
-    font-weight: 400;
-  }
-  
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  overflow: auto;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  padding: 48px 24px;
+  text-align: center;
+  color: var(--text);
+  font-family: var(--font-body);
+}
+
+.not-found-kicker {
+  color: var(--muted);
+  font-family: var(--font-head);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.not-found-container2 {
+  display: flex;
+  position: relative;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.not-found-text2 {
+  color: var(--accent);
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: clamp(8rem, 30vw, 16rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  margin: 0;
+}
+
+.not-found-container3 {
+  width: 100%;
+  max-width: 460px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  gap: 28px;
+}
+
+.not-found-text3 {
+  text-align: center;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+.not-found-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 13px 26px;
+  border-radius: 999px;
+  font-family: var(--font-head);
+  font-size: 14px;
+  font-weight: 600;
+  background: var(--accent);
+  color: var(--ink);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.not-found-link:hover {
+  background: #d9dbe0;
+  transform: translateY(-2px);
+}
