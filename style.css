@@ -879,9 +879,9 @@ a {
 
 .theme-toggle {
   flex: none;
-  width: 42px;
-  height: 42px;
-  margin-left: 6px;
+  width: 40px;
+  height: 40px;
+  margin: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -903,6 +903,44 @@ a {
 .theme-toggle:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
+}
+
+.pdf-button {
+  flex: none;
+  width: 40px;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid var(--line-strong);
+  background: var(--panel);
+  color: var(--text);
+  cursor: pointer;
+  transition: background 0.25s ease, border-color 0.25s ease,
+    transform 0.3s var(--ease-pop);
+}
+
+.pdf-button:hover {
+  border-color: var(--text);
+  transform: scale(1.08);
+}
+
+.pdf-button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.pdf-button svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .theme-toggle__icon {
@@ -2139,6 +2177,15 @@ a {
   color: var(--muted);
 }
 
+.achievement__certificate {
+  display: none;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
 .achievement__cta {
   flex: none;
   display: inline-flex;
@@ -2526,7 +2573,9 @@ body.error-page .not-found-container1 {
   }
 
   .hero__title {
-    font-size: clamp(2.4rem, 12vw, 3.4rem);
+    font-size: clamp(2.2rem, 11vw, 3rem);
+    white-space: normal;
+    text-wrap: balance;
   }
 
   .hero__mark {
@@ -2646,5 +2695,164 @@ body.error-page .not-found-container1 {
   .reveal {
     opacity: 1;
     transform: none;
+  }
+}
+
+/* ---------- Print / PDF export ---------- */
+
+@media print {
+  @page {
+    size: A4;
+    margin: 12mm;
+  }
+
+  .site-header,
+  .theme-toggle--float,
+  .hero__actions,
+  .rail__nav,
+  .skip-link,
+  .lightbox {
+    display: none !important;
+  }
+
+  body,
+  .hero,
+  .section,
+  .game,
+  .skill,
+  .social,
+  .panel,
+  .point,
+  .achievement {
+    color: var(--text) !important;
+    background: var(--ink) !important;
+    box-shadow: none !important;
+    border-color: var(--line-strong) !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body {
+    font-size: 11pt;
+  }
+
+  .hero {
+    min-height: auto !important;
+    border-bottom: 1px solid var(--line-strong);
+    padding: 14mm 0 !important;
+  }
+
+  .hero__grid {
+    min-height: auto !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .hero__title {
+    white-space: normal;
+  }
+
+  .wrap {
+    max-width: none;
+    padding-left: 2mm;
+    padding-right: 2mm;
+  }
+
+  .section {
+    padding: 8mm 0 !important;
+  }
+
+  .section__head {
+    margin-bottom: 5mm;
+  }
+
+  .section__title {
+    font-size: 20pt;
+  }
+
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .game {
+    display: block;
+    break-inside: avoid;
+    margin-bottom: 8mm;
+  }
+
+  .rail__item,
+  .panel,
+  .point,
+  .skill,
+  .achievement {
+    break-inside: avoid;
+  }
+
+  .game__head {
+    margin-bottom: 3mm;
+  }
+
+  .game__desc {
+    line-height: 1.45;
+  }
+
+  .game__info,
+  .rail,
+  .achievements {
+    display: block;
+    margin-bottom: 4mm;
+  }
+
+  .rail {
+    margin-top: 3mm;
+  }
+
+  .rail__track {
+    overflow: visible;
+    flex-wrap: wrap;
+    gap: 3mm;
+    padding-bottom: 0;
+  }
+
+  .rail__item img {
+    width: auto;
+    height: 42mm;
+    max-width: 76mm;
+  }
+
+  .rail__item img[data-shape="wide"] {
+    width: 76mm;
+    height: 43mm;
+  }
+
+  .rail__item img[data-shape="tall"] {
+    width: 24mm;
+    height: 42mm;
+  }
+
+  .achievement__certificate {
+    position: static;
+    display: block;
+    width: min(100mm, 100%);
+    height: auto;
+    margin-top: 4mm;
+    opacity: 1;
+    pointer-events: auto;
+    border-radius: 4px;
+    border: 1px solid var(--line-strong);
+  }
+
+  .about__visual {
+    max-width: 55mm;
+    justify-self: end;
+  }
+
+  .about__visual img {
+    transform: none !important;
+  }
+
+  .achievement__cta {
+    display: none !important;
   }
 }

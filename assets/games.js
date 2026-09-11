@@ -203,6 +203,9 @@
       var body = el("span", "achievement__body");
       body.appendChild(el("span", "achievement__title", item.title || ""));
       if (item.event) body.appendChild(el("span", "achievement__event", item.event));
+      if (item.certificate) {
+        body.appendChild(img(item.certificate, (item.title || "Certificate") + " certificate", "achievement__certificate"));
+      }
 
       var main = el("span", "achievement__main");
       main.appendChild(img("public/bxltrophy.svg", "", "achievement__trophy"));
@@ -643,6 +646,15 @@
     });
   }
 
+  function initPdfDownload() {
+    var buttons = document.querySelectorAll("[data-download-pdf]");
+    Array.prototype.forEach.call(buttons, function (button) {
+      button.addEventListener("click", function () {
+        window.print();
+      });
+    });
+  }
+
   function fail(message) {
     var mount = document.getElementById("games") || document.getElementById("game-root");
     if (!mount) return;
@@ -667,6 +679,7 @@
     initTheme();
     initParallax();
     initPageTransitions();
+    initPdfDownload();
   }
 
   document.addEventListener("DOMContentLoaded", function () {
