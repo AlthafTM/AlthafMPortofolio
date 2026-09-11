@@ -2699,7 +2699,7 @@ body.error-page .not-found-container1 {
 @media print {
   @page {
     size: A4;
-    margin: 12mm;
+    margin: 0;
   }
 
   .site-header,
@@ -2707,7 +2707,8 @@ body.error-page .not-found-container1 {
   .hero__actions,
   .rail__nav,
   .skip-link,
-  .lightbox {
+  .lightbox,
+  .about__visual {
     display: none !important;
   }
 
@@ -2730,6 +2731,7 @@ body.error-page .not-found-container1 {
 
   body {
     font-size: 11pt;
+    padding: 12mm;
   }
 
   .hero {
@@ -2837,11 +2839,6 @@ body.error-page .not-found-container1 {
     pointer-events: auto;
     border-radius: 4px;
     border: 1px solid var(--line-strong);
-  }
-
-  .about__visual {
-    max-width: 55mm;
-    justify-self: end;
   }
 
   .about__visual img {
