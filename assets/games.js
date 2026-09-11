@@ -77,6 +77,7 @@
 
     var track = el("div", "rail__track");
     track.setAttribute("tabindex", "0");
+    var navFrame = 0;
 
     (game.images || []).forEach(function (src, i) {
       var figure = el("figure", "rail__item");
@@ -114,8 +115,15 @@
       wrap.classList.toggle("is-end", track.scrollLeft >= max);
       wrap.classList.toggle("is-static", track.scrollWidth <= track.clientWidth + 4);
     }
-    track.addEventListener("scroll", updateNav, { passive: true });
-    window.addEventListener("resize", updateNav);
+    function scheduleNavUpdate() {
+      if (navFrame) return;
+      navFrame = requestAnimationFrame(function () {
+        navFrame = 0;
+        updateNav();
+      });
+    }
+    track.addEventListener("scroll", scheduleNavUpdate, { passive: true });
+    window.addEventListener("resize", scheduleNavUpdate, { passive: true });
 
     // Pointer drag-to-scroll (mouse, pen, touch)
     var dragging = false;
@@ -452,7 +460,8 @@
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
             entry.target.classList.add("is-visible");
-            observer.unobserve(entry.target);
+          } else {
+            entry.target.classList.remove("is-visible");
           }
         });
       },
@@ -567,19 +576,71 @@
     Array.prototype.forEach.call(buttons, function (btn) {
       btn.addEventListener("click", function () {
         var isLight = root.getAttribute("data-theme") === "light";
-        if (isLight) {
-          root.removeAttribute("data-theme");
-        } else {
-          root.setAttribute("data-theme", "light");
+        function changeTheme() {
+          if (isLight) {
+            root.removeAttribute("data-theme");
+          } else {
+            root.setAttribute("data-theme", "light");
+          }
+          try {
+            localStorage.setItem("theme", isLight ? "dark" : "light");
+          } catch (e) {}
+          sync();
         }
-        try {
-          localStorage.setItem("theme", isLight ? "dark" : "light");
-        } catch (e) {}
-        sync();
+
+        document.body.classList.add("theme-changing");
+        changeTheme();
+        window.setTimeout(function () {
+          document.body.classList.remove("theme-changing");
+        }, 520);
       });
     });
 
     sync();
+  }
+
+  function initParallax() {
+    var visual = document.querySelector("[data-parallax]");
+    if (!visual) return;
+    var image = visual.querySelector("img");
+    if (!image) return;
+
+    var frame = 0;
+    var pointerX = 0;
+    var pointerY = 0;
+    visual.addEventListener("pointermove", function (event) {
+      var rect = visual.getBoundingClientRect();
+      pointerX = (event.clientX - rect.left) / rect.width - 0.5;
+      pointerY = (event.clientY - rect.top) / rect.height - 0.5;
+      if (frame) return;
+      frame = requestAnimationFrame(function () {
+        frame = 0;
+        image.style.setProperty("--visual-x", (pointerX * 10).toFixed(2) + "px");
+        image.style.setProperty("--visual-y", (pointerY * 10).toFixed(2) + "px");
+        image.style.setProperty("--visual-rx", (-pointerY * 4).toFixed(2) + "deg");
+        image.style.setProperty("--visual-ry", (pointerX * 4).toFixed(2) + "deg");
+      });
+    });
+    visual.addEventListener("pointerleave", function () {
+      image.style.setProperty("--visual-x", "0px");
+      image.style.setProperty("--visual-y", "0px");
+      image.style.setProperty("--visual-rx", "0deg");
+      image.style.setProperty("--visual-ry", "0deg");
+    });
+  }
+
+  function initPageTransitions() {
+    document.body.classList.add("page-ready");
+    document.addEventListener("click", function (event) {
+      var anchor = event.target.closest && event.target.closest("a");
+      if (!anchor || anchor.target === "_blank" || anchor.hasAttribute("download")) return;
+      var href = anchor.getAttribute("href") || "";
+      if (!href || href.charAt(0) === "#" || /^(https?:|mailto:|tel:)/i.test(href)) return;
+      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      event.preventDefault();
+      document.body.classList.add("page-fade-out");
+      window.setTimeout(function () { window.location.href = href; }, 220);
+    });
   }
 
   function fail(message) {
@@ -604,6 +665,8 @@
     initLightbox();
     initHeader();
     initTheme();
+    initParallax();
+    initPageTransitions();
   }
 
   document.addEventListener("DOMContentLoaded", function () {

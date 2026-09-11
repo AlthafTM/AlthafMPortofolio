@@ -83,13 +83,14 @@
       "difficulties": [
         "Making the catapult launch feel consistent across every drag distance.",
         "Keeping level difficulty from spiking too fast in the later stages.",
-        "Getting the ball physics to behave well on slopes and bouncy surfaces."
+        "Getting the ball physics to behave well on slopes and bouncy surfaces.",
+        "Adding enough level and mechanic variation so progression never feels repetitive or predictable."
       ],
       "learnings": [
-        "Built my first complete drag-and-release (catapult) control system with Unity physics.",
+        "Learned the fundamentals of control-system design and Unity physics through the catapult mechanic.",
         "Learned to tune Rigidbody2D forces and friction so the ball feels predictable.",
         "Structured levels and progression so difficulty ramps up smoothly.",
-        "Picked up pixel-art and UI basics while polishing the game feel."
+        "Learned Unity UI and UI post-processing basics."
       ]
     },
     {
@@ -123,13 +124,16 @@
       "difficulties": [
         "Building a convincing scary atmosphere with limited art and time.",
         "Optimizing the 3D forest scene so performance stayed steady.",
-        "Guiding the player without explicit markers or a visible HUD."
+        "Guiding the player without explicit markers or a visible HUD.",
+        "Building suspense so the horror pacing feels tense and each jumpscare lands at the right moment."
       ],
       "learnings": [
         "Created atmosphere with lighting, fog, and spatial audio in Unity 3D.",
         "Learned first-person interaction and objective-based progression.",
         "Used environmental storytelling to build tension without cutscenes.",
-        "Gained experience optimizing a 3D scene for steady performance."
+        "Learned the fundamentals of Unity's Terrain system and first-person movement.",
+        "Learned basic 3D modeling workflows using Blender.",
+        "Learned the basics of game audio, including ambience, timing, and spatial sound."
       ]
     }
   ],
