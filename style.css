@@ -2568,6 +2568,10 @@ body.error-page .not-found-container1 {
     width: 124px;
   }
 
+  .about__visual {
+    display: none;
+  }
+
   .hero__title {
     font-size: clamp(2.2rem, 11vw, 3rem);
     white-space: normal;
