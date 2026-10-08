@@ -1963,3 +1963,5 @@ body.error-page .not-found-container1 {
 .lightbox.is-open img { opacity: 1; transform: scale(1); }
 
 .rail__item img { object-fit: contain; }
+
+@media (max-width: 640px) { .detail__nav-link--prev, .detail__nav-link--next { grid-column: 1; min-width: 0; } .detail__nav-text { min-width: 0; overflow-wrap: anywhere; } }

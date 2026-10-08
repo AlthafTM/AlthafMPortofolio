@@ -56,9 +56,42 @@ window.GAMES_DATA = {
       ]
     },
     {
+      "id": "exsilva",
+      "title": "Exsilva Project",
+      "order": "02",
+      "icon": "public/exsilva-logo.webp",
+      "description": "Exsilva Project is a story-driven 2.5D game that blends 3D visuals with 2D pixel art. Its unique combat system combines classic turn-based mechanics with action elements such as quick-time events (QTEs), parrying, and dodging.",
+      "links": {},
+      "badges": {},
+      "images": [
+        "public/exsilva-1.webp",
+        "public/exsilva-2.webp",
+        "public/exsilva-3.webp",
+        "public/exsilva-4.webp",
+        "public/exsilva-5.webp"
+      ],
+      "details": {
+        "devTime": "2 months",
+        "budget": "Self-funded · $10",
+        "tools": "Unity · C# · VS Code · Blender · FL Studio",
+        "role": "Team of 3 · Game designer, game programmer & composer"
+      },
+      "difficulties": [
+        "Making the turn-based action combat feel smooth.",
+        "Collaborating remotely with teammates in different locations.",
+        "Designing and building a complete demo within a short timeframe."
+      ],
+      "learnings": [
+        "Learned to implement a 2.5D game system.",
+        "Learned to compose game music and create sound effects.",
+        "Learned to collaborate as a team.",
+        "Learned to build a game prototype."
+      ]
+    },
+    {
       "id": "bounce",
       "title": "Bounce!",
-      "order": "02",
+      "order": "03",
       "icon": "public/Bounce2007-0wo5.png",
       "description": "Bounce! is a 2D puzzle game that challenges players to move a ball by dragging it back like a catapult. The goal is to navigate the ball through a series of bounces to reach the finish line. This game sharpens your coordination and critical thinking skills as you strategize each move.",
       "availability": [
@@ -101,7 +134,7 @@ window.GAMES_DATA = {
     {
       "id": "undertaker",
       "title": "Undertaker",
-      "order": "03",
+      "order": "04",
       "icon": "public/Bounce2007-dnu.png",
       "description": "Undertaker is a 3D horror game inspired by Indonesian folktales, where you play as an undertaker assigned to clean a grave in a dense forest. As you proceed with the task, an unsettling feeling grows, and the forest around you becomes increasingly eerie and strange.",
       "availability": [
@@ -141,39 +174,6 @@ window.GAMES_DATA = {
         "Learned the fundamentals of Unity's Terrain system and first-person movement.",
         "Learned basic 3D modeling workflows using Blender.",
         "Learned the basics of game audio, including ambience, timing, and spatial sound."
-      ]
-    },
-    {
-      "id": "exsilva",
-      "title": "Exsilva Project",
-      "order": "04",
-      "icon": "public/exsilva-logo.webp",
-      "description": "Exsilva Project is a story-driven 2.5D game that blends 3D visuals with 2D pixel art. Its unique combat system combines classic turn-based mechanics with action elements such as quick-time events (QTEs), parrying, and dodging.",
-      "links": {},
-      "badges": {},
-      "images": [
-        "public/exsilva-1.webp",
-        "public/exsilva-2.webp",
-        "public/exsilva-3.webp",
-        "public/exsilva-4.webp",
-        "public/exsilva-5.webp"
-      ],
-      "details": {
-        "devTime": "2 months",
-        "budget": "Self-funded · $10",
-        "tools": "Unity · C# · VS Code · Blender · FL Studio",
-        "role": "Team of 3 · Game designer, game programmer & composer"
-      },
-      "difficulties": [
-        "Making the turn-based action combat feel smooth.",
-        "Collaborating remotely with teammates in different locations.",
-        "Designing and building a complete demo within a short timeframe."
-      ],
-      "learnings": [
-        "Learned to implement a 2.5D game system.",
-        "Learned to compose game music and create sound effects.",
-        "Learned to collaborate as a team.",
-        "Learned to build a game prototype."
       ]
     }
   ],
