@@ -32,6 +32,7 @@
   --pill-bg: rgba(10, 10, 12, 0.82);
   --radius: 12px;
   --radius-sm: 8px;
+  --radius-button: 999px;
   --wrap: 1180px;
   --shadow: 0 24px 60px -30px rgba(0, 0, 0, 0.85);
   --ease-pop: cubic-bezier(0.2, 0.8, 0.2, 1);
@@ -2155,4 +2156,19 @@ body.error-page .not-found-container1 {
 .site-footer { border-top: 1px solid var(--line); }
 @media (prefers-reduced-motion: reduce) {
   ::view-transition-old(root), ::view-transition-new(root) { animation: none; }
+}
+
+/* One pill shape for text actions; square icon actions become circles. */
+.btn,
+.site-nav a,
+.theme-toggle,
+.pdf-button,
+.back-link,
+.rail__nav,
+.lightbox__close,
+.achievement,
+.detail__nav-link,
+.social,
+.not-found-link {
+  border-radius: var(--radius-button);
 }
