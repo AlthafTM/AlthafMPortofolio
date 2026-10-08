@@ -1967,3 +1967,20 @@ body.error-page .not-found-container1 {
 .rail__item img { object-fit: contain; }
 
 @media (max-width: 640px) { .detail__nav-link--prev, .detail__nav-link--next { grid-column: 1; min-width: 0; } .detail__nav-text { min-width: 0; overflow-wrap: anywhere; } }
+
+/* Animate the icon separately so the page can crossfade as one surface. */
+.theme-toggle__icon { view-transition-name: theme-icon; }
+::view-transition-group(theme-icon) { animation-duration: 500ms; }
+::view-transition-old(theme-icon) { animation: theme-icon-out 500ms ease both; }
+::view-transition-new(theme-icon) { animation: theme-icon-in 500ms ease both; }
+@keyframes theme-icon-out { from { opacity: 1; transform: rotate(0) scale(1); } to { opacity: 0; transform: rotate(-140deg) scale(.2); } }
+@keyframes theme-icon-in { from { opacity: 0; transform: rotate(140deg) scale(.2); } to { opacity: 1; transform: rotate(0) scale(1); } }
+html.theme-changing:not(.theme-snapshot) .theme-toggle__icon,
+html.theme-changing:not(.theme-snapshot) .theme-toggle__moon,
+html.theme-changing:not(.theme-snapshot) .theme-toggle__sun {
+  transition: transform .5s var(--ease-pop), opacity .35s ease !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  .theme-toggle__icon { view-transition-name: none; }
+  ::view-transition-old(theme-icon), ::view-transition-new(theme-icon) { animation: none; }
+}

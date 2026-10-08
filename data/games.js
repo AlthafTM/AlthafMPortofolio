@@ -61,14 +61,18 @@ window.GAMES_DATA = {
       "order": "02",
       "icon": "public/exsilva-logo.webp",
       "description": "Exsilva Project is a story-driven 2.5D game that blends 3D visuals with 2D pixel art. Its unique combat system combines classic turn-based mechanics with action elements such as quick-time events (QTEs), parrying, and dodging.",
-      "links": {},
-      "badges": {},
+      "links": {
+        "itch": "https://althafm.itch.io/exsilva-project"
+      },
+      "badges": {
+        "itch": "public/itchiobadge.svg"
+      },
       "images": [
-        "public/exsilva-1.webp",
         "public/exsilva-2.webp",
         "public/exsilva-3.webp",
         "public/exsilva-4.webp",
-        "public/exsilva-5.webp"
+        "public/exsilva-5.webp",
+        "public/exsilva-1.webp"
       ],
       "details": {
         "devTime": "2 months",
@@ -86,6 +90,16 @@ window.GAMES_DATA = {
         "Learned to compose game music and create sound effects.",
         "Learned to collaborate as a team.",
         "Learned to build a game prototype."
+      ],
+      "availability": [
+        "itch.io"
+      ],
+      "achievements": [
+        {
+          "title": "Finalist",
+          "event": "COMPFEST 18 Indie Game Ignite",
+          "certificate": "public/compfest18-finalist.webp"
+        }
       ]
     },
     {

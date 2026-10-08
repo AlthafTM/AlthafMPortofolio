@@ -23,15 +23,17 @@
         sync();
       }
       function finish() {
-        root.classList.remove("theme-changing");
+        root.classList.remove("theme-changing", "theme-snapshot");
         changing = false;
       }
       if (document.startViewTransition && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        root.classList.add("theme-snapshot");
         var transition = document.startViewTransition(update);
         transition.finished.then(finish, finish);
       } else {
         update();
-        requestAnimationFrame(finish);
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) requestAnimationFrame(finish);
+        else window.setTimeout(finish, 520);
       }
     });
   });
