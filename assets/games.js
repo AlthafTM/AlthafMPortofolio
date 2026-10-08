@@ -52,12 +52,8 @@
 
   function classifyRatio(im) {
     if (!im.naturalWidth || !im.naturalHeight) return;
-    var ratio = im.naturalWidth / im.naturalHeight;
-    var wide = Math.abs(ratio - 16 / 9);
-    var tall = Math.abs(ratio - 9 / 19);
-    var isWide = wide <= tall;
-    im.style.aspectRatio = isWide ? "16 / 9" : "9 / 19";
-    im.setAttribute("data-shape", isWide ? "wide" : "tall");
+    im.style.aspectRatio = im.naturalWidth + " / " + im.naturalHeight;
+    im.setAttribute("data-shape", im.naturalWidth >= im.naturalHeight ? "wide" : "tall");
   }
 
   function rail(game, options) {
@@ -83,7 +79,6 @@
       var figure = el("figure", "rail__item");
       var picture = img(src, game.title + " screenshot " + (i + 1));
       picture.setAttribute("data-zoom", src);
-      picture.style.aspectRatio = "16 / 9";
       if (picture.complete) {
         classifyRatio(picture);
       } else {
