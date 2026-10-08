@@ -6,7 +6,7 @@
   function sync() {
     var light = root.getAttribute("data-theme") === "light";
     buttons.forEach(function (button) {
-      button.setAttribute("aria-label", light ? "Switch to dark mode" : "Switch to light mode");
+      button.setAttribute("aria-label", window.PortfolioLanguage ? window.PortfolioLanguage.translate(light ? "Switch to dark mode" : "Switch to light mode") : (light ? "Switch to dark mode" : "Switch to light mode"));
       button.setAttribute("aria-pressed", String(light));
     });
   }
@@ -35,5 +35,6 @@
       }
     });
   });
+  document.addEventListener("languagechange", sync);
   sync();
 })();

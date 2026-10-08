@@ -4,6 +4,6 @@
   "private": true,
   "description": "Static portfolio website",
   "scripts": {
-    "check": "node --check assets/games.js && node --check assets/theme.js && node --check data/games.js"
+    "check": "node --check assets/games.js && node --check assets/theme.js && node --check assets/language.js && node --check data/games.js && node --check data/translations.js"
   }
 }

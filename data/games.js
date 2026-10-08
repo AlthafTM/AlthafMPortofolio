@@ -1,4 +1,4 @@
-﻿window.GAMES_DATA = {
+window.GAMES_DATA = {
   "site": {
     "name": "Althaf M.",
     "role": "Game Developer",
@@ -11,7 +11,10 @@
       "order": "01",
       "icon": "public/Bounce2050-4vff.png",
       "description": "RogueBlast is a 2D Puzzle game that fuse hypercasual gameplay of the hit-game Block Blast with Roguelite or Roguelike elements, with buffs, passive and boss to beat, RogueBlast offer the player new fresh experience that they never play before.",
-      "availability": ["itch.io", "playstore"],
+      "availability": [
+        "itch.io",
+        "playstore"
+      ],
       "links": {
         "itch": "https://althafm.itch.io/rogue-blast",
         "playstore": "https://play.google.com/store/apps/details?id=com.althafm.rogueblast"
@@ -29,8 +32,8 @@
       ],
       "details": {
         "devTime": "4 months",
-        "budget": "Self-funded \u00b7 ~$0 core cost",
-        "tools": "Unity \u00b7 C# \u00b7 VS Code",
+        "budget": "Self-funded · ~$0 core cost",
+        "tools": "Unity · C# · VS Code",
         "role": "Solo developer & publisher"
       },
       "achievements": [
@@ -58,7 +61,9 @@
       "order": "02",
       "icon": "public/Bounce2007-0wo5.png",
       "description": "Bounce! is a 2D puzzle game that challenges players to move a ball by dragging it back like a catapult. The goal is to navigate the ball through a series of bounces to reach the finish line. This game sharpens your coordination and critical thinking skills as you strategize each move.",
-      "availability": ["itch.io"],
+      "availability": [
+        "itch.io"
+      ],
       "links": {
         "itch": "https://althafm.itch.io/bounce",
         "playstore": ""
@@ -75,8 +80,8 @@
       ],
       "details": {
         "devTime": "4 months",
-        "budget": "Self-funded \u00b7 ~$0 core cost",
-        "tools": "Unity \u00b7 C# \u00b7 Audacity",
+        "budget": "Self-funded · ~$0 core cost",
+        "tools": "Unity · C# · Audacity",
         "role": "Solo developer"
       },
       "achievements": [],
@@ -99,7 +104,9 @@
       "order": "03",
       "icon": "public/Bounce2007-dnu.png",
       "description": "Undertaker is a 3D horror game inspired by Indonesian folktales, where you play as an undertaker assigned to clean a grave in a dense forest. As you proceed with the task, an unsettling feeling grows, and the forest around you becomes increasingly eerie and strange.",
-      "availability": ["itch.io"],
+      "availability": [
+        "itch.io"
+      ],
       "links": {
         "itch": "https://althafm.itch.io/undertakers",
         "playstore": ""
@@ -116,8 +123,8 @@
       ],
       "details": {
         "devTime": "4 months",
-        "budget": "Self-funded \u00b7 ~$0 core cost",
-        "tools": "Unity \u00b7 C# \u00b7 Blender",
+        "budget": "Self-funded · ~$0 core cost",
+        "tools": "Unity · C# · Blender",
         "role": "Solo developer"
       },
       "achievements": [],
@@ -135,20 +142,93 @@
         "Learned basic 3D modeling workflows using Blender.",
         "Learned the basics of game audio, including ambience, timing, and spatial sound."
       ]
+    },
+    {
+      "id": "exsilva",
+      "title": "Exsilva Project",
+      "order": "04",
+      "icon": "public/exsilva-logo.webp",
+      "description": "Exsilva Project is a story-driven 2.5D game that blends 3D visuals with 2D pixel art. Its unique combat system combines classic turn-based mechanics with action elements such as quick-time events (QTEs), parrying, and dodging.",
+      "links": {},
+      "badges": {},
+      "images": [
+        "public/exsilva-1.webp",
+        "public/exsilva-2.webp",
+        "public/exsilva-3.webp",
+        "public/exsilva-4.webp",
+        "public/exsilva-5.webp"
+      ],
+      "details": {
+        "devTime": "2 months",
+        "budget": "Self-funded · $10",
+        "tools": "Unity · C# · VS Code · Blender · FL Studio",
+        "role": "Team of 3 · Game designer, game programmer & composer"
+      },
+      "difficulties": [
+        "Making the turn-based action combat feel smooth.",
+        "Collaborating remotely with teammates in different locations.",
+        "Designing and building a complete demo within a short timeframe."
+      ],
+      "learnings": [
+        "Learned to implement a 2.5D game system.",
+        "Learned to compose game music and create sound effects.",
+        "Learned to collaborate as a team.",
+        "Learned to build a game prototype."
+      ]
     }
   ],
   "stack": [
-    { "name": "Unity", "icon": "public/bxlunity112008-2ny.svg", "level": 5 },
-    { "name": "Go", "icon": "public/bxlgolang12012-go.svg", "level": 4 },
-    { "name": "C#", "icon": "public/LogoCsharpsvg12012-u6me.png", "level": 3 },
-    { "name": "C++", "icon": "public/bxlcplusplus12012-b5jr.svg", "level": 3 },
-    { "name": "FL Studio", "icon": "public/bxlflstudio-fl.svg", "level": 3 },
-    { "name": "Blender", "icon": "public/bxlblender-blender.svg", "level": 3 }
+    {
+      "name": "Unity",
+      "icon": "public/bxlunity112008-2ny.svg",
+      "level": 5
+    },
+    {
+      "name": "Go",
+      "icon": "public/bxlgolang12012-go.svg",
+      "level": 4
+    },
+    {
+      "name": "C#",
+      "icon": "public/LogoCsharpsvg12012-u6me.png",
+      "level": 3
+    },
+    {
+      "name": "C++",
+      "icon": "public/bxlcplusplus12012-b5jr.svg",
+      "level": 3
+    },
+    {
+      "name": "FL Studio",
+      "icon": "public/bxlflstudio-fl.svg",
+      "level": 3
+    },
+    {
+      "name": "Blender",
+      "icon": "public/bxlblender-blender.svg",
+      "level": 3
+    }
   ],
   "socials": [
-    { "name": "GitHub", "icon": "public/bxlgithub12008-d7ii.svg", "url": "https://github.com/AlthafTM" },
-    { "name": "LinkedIn", "icon": "public/bxllinkedinsquare12008-fjzb.svg", "url": "https://www.linkedin.com/in/althaf-tristan-maheswara-857912246/" },
-    { "name": "Instagram", "icon": "public/bxlinstagramalt12008-ug6b.svg", "url": "https://www.instagram.com/althafmmm/" },
-    { "name": "Discord", "icon": "public/bxldiscordalt12008-2wt8.svg", "url": "https://discordapp.com/users/598357738120151082" }
+    {
+      "name": "GitHub",
+      "icon": "public/bxlgithub12008-d7ii.svg",
+      "url": "https://github.com/AlthafTM"
+    },
+    {
+      "name": "LinkedIn",
+      "icon": "public/bxllinkedinsquare12008-fjzb.svg",
+      "url": "https://www.linkedin.com/in/althaf-tristan-maheswara-857912246/"
+    },
+    {
+      "name": "Instagram",
+      "icon": "public/bxlinstagramalt12008-ug6b.svg",
+      "url": "https://www.instagram.com/althafmmm/"
+    },
+    {
+      "name": "Discord",
+      "icon": "public/bxldiscordalt12008-2wt8.svg",
+      "url": "https://discordapp.com/users/598357738120151082"
+    }
   ]
 };

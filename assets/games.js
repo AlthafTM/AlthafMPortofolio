@@ -456,43 +456,27 @@
     box.setAttribute("aria-modal", "true");
     box.appendChild(el("button", "lightbox__close", "\u00d7"));
     var image = img("", "");
-    var frame = document.createElement("iframe");
-    frame.className = "lightbox__frame";
-    frame.setAttribute("title", "Certificate");
     box.appendChild(image);
-    box.appendChild(frame);
     var hint = el("p", "lightbox__hint", "Press any button to close");
     box.appendChild(hint);
     document.body.appendChild(box);
-
-    function isPdf(src) {
-      return /\.pdf(\?|#|$)/i.test(src);
-    }
 
     function close() {
       if (!box.classList.contains("is-open")) return;
       box.classList.remove("is-open");
       document.body.classList.remove("no-scroll");
       image.removeAttribute("src");
-      frame.removeAttribute("src");
-      box.classList.remove("is-pdf");
+
     }
 
     function open(src, alt) {
-      if (isPdf(src)) {
-        box.classList.add("is-pdf");
-        image.removeAttribute("src");
-        frame.src = src;
-      } else {
-        box.classList.remove("is-pdf");
-        frame.removeAttribute("src");
-        image.src = src;
-        image.alt = alt || "";
-      }
+      image.src = src;
+      image.alt = alt || "";
       box.classList.add("is-open");
       document.body.classList.add("no-scroll");
     }
 
+    box.querySelector(".lightbox__close").setAttribute("aria-label", "Close image preview");
     box.querySelector(".lightbox__close").addEventListener("click", close);
     box.addEventListener("click", function (e) {
       if (e.target === box || e.target === image) close();
@@ -551,53 +535,6 @@
     });
   }
 
-  function initPdfDownload() {
-    var buttons = Array.prototype.slice.call(document.querySelectorAll("[data-download-pdf]"));
-    var busy = false;
-    function prepareImages() {
-      return Promise.all(Array.prototype.map.call(document.images, function (image) {
-        if (!image.getAttribute("src")) return Promise.resolve();
-        image.loading = "eager";
-        return new Promise(function (resolve) {
-          if (image.complete) { resolve(); return; }
-          image.addEventListener("load", resolve, { once: true });
-          image.addEventListener("error", resolve, { once: true });
-        }).then(function () {
-          if (!image.naturalWidth) throw new Error("Image failed to load");
-          return image.decode ? image.decode().catch(function () {}) : undefined;
-        });
-      }));
-    }
-    window.addEventListener("beforeprint", prepareImages);
-    buttons.forEach(function (button) {
-      button.addEventListener("click", async function () {
-        if (busy) return;
-        busy = true;
-        var label = button.innerHTML;
-        buttons.forEach(function (item) { item.disabled = true; });
-        button.textContent = "Preparing PDF…";
-        var timeout;
-        try {
-          await Promise.race([
-            Promise.all([prepareImages(), document.fonts ? document.fonts.ready : Promise.resolve()]),
-            new Promise(function (_, reject) {
-              timeout = window.setTimeout(function () { reject(new Error("Loading timed out")); }, 20000);
-            })
-          ]);
-          await new Promise(function (resolve) { requestAnimationFrame(function () { requestAnimationFrame(resolve); }); });
-          window.print();
-        } catch (error) {
-          window.alert("Some images or fonts could not finish loading. Please check your connection and try downloading the PDF again.");
-        } finally {
-          window.clearTimeout(timeout);
-          button.innerHTML = label;
-          buttons.forEach(function (item) { item.disabled = false; });
-          busy = false;
-        }
-      });
-    });
-  }
-
   function fail(message) {
     var mount = document.getElementById("games") || document.getElementById("game-root");
     if (!mount) return;
@@ -619,7 +556,7 @@
     initLightbox();
     initHeader();
     initPageTransitions();
-    initPdfDownload();
+    if (window.PortfolioLanguage) window.PortfolioLanguage.apply();
   }
 
   document.addEventListener("DOMContentLoaded", function () {

@@ -30,8 +30,8 @@
   --header-bg-scrolled: rgba(8, 8, 10, 0.86);
   --lightbox-bg: rgba(4, 4, 6, 0.92);
   --pill-bg: rgba(10, 10, 12, 0.82);
-  --radius: 12px;
-  --radius-sm: 8px;
+  --radius: 22px;
+  --radius-sm: 16px;
   --radius-button: 999px;
   --wrap: 1180px;
   --shadow: 0 24px 60px -30px rgba(0, 0, 0, 0.85);
@@ -265,43 +265,13 @@ a {
   outline-offset: 3px;
 }
 
-.pdf-button {
-  flex: none;
-  width: 40px;
-  height: 40px;
-  margin: 0;
-  padding: 0;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  border: 1px solid var(--line-strong);
-  background: var(--panel);
-  color: var(--text);
-  cursor: pointer;
-  transition: background 0.25s ease, border-color 0.25s ease,
-    transform 0.3s var(--ease-pop);
-}
 
-.pdf-button:hover {
-  border-color: var(--text);
-  transform: scale(1.08);
-}
 
-.pdf-button:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 3px;
-}
 
-.pdf-button svg {
-  width: 20px;
-  height: 20px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.8;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
+
+
+
+
 
 .theme-toggle__icon {
   position: relative;
@@ -1646,31 +1616,13 @@ a {
   transition: opacity 0.38s ease, transform 0.38s ease;
 }
 
-.lightbox__frame {
-  display: none;
-  width: min(1000px, 92vw);
-  height: min(720px, 82vh);
-  border: 1px solid var(--line-strong);
-  border-radius: var(--radius-sm);
-  background: #1a1a1a;
-  opacity: 0;
-  transform: scale(0.98);
-  transition: opacity 0.38s ease, transform 0.38s ease;
-}
 
-.lightbox.is-pdf .lightbox__frame {
-  display: block;
-}
 
-.lightbox.is-pdf img {
-  display: none;
-}
 
-.lightbox.is-open img,
-.lightbox.is-open .lightbox__frame {
-  opacity: 1;
-  transform: scale(1);
-}
+
+
+
+
 
 @keyframes pop {
   from {
@@ -1969,180 +1921,6 @@ body.error-page .not-found-container1 {
   }
 }
 
-/* ---------- Print / PDF export ---------- */
-
-@media print {
-  @page {
-    size: A4;
-    margin: 12mm;
-  }
-
-  .site-header,
-  .theme-toggle--float,
-  .hero__actions,
-  .rail__nav,
-  .skip-link,
-  .lightbox,
-  .about__visual {
-    display: none !important;
-  }
-
-  body,
-  .hero,
-  .section,
-  .game,
-  .skill,
-  .social,
-  .panel,
-  .point,
-  .achievement {
-    color: var(--text) !important;
-    background: var(--ink) !important;
-    box-shadow: none !important;
-    border-color: var(--line-strong) !important;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-  }
-
-  body {
-    font-size: 11pt;
-    padding: 0;
-  }
-
-  .hero {
-    min-height: auto !important;
-    border-bottom: 1px solid var(--line-strong);
-    padding: 14mm 0 !important;
-  }
-
-  .hero__grid {
-    min-height: auto !important;
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-  }
-
-  .hero__title {
-    white-space: normal;
-  }
-
-  .wrap {
-    max-width: none;
-    padding-left: 2mm;
-    padding-right: 2mm;
-  }
-
-  .section {
-    padding: 8mm 0 !important;
-  }
-
-  .section__head {
-    margin-bottom: 5mm;
-  }
-
-  .section__title {
-    font-size: 20pt;
-  }
-
-  .reveal {
-    opacity: 1 !important;
-    transform: none !important;
-  }
-
-  .game {
-    display: block;
-    break-inside: auto;
-    margin-bottom: 8mm;
-  }
-
-  .rail__item,
-  .panel,
-  .point,
-  .skill,
-  .achievement {
-    break-inside: avoid;
-  }
-
-  .game__head {
-    margin-bottom: 3mm;
-  }
-
-  .game__desc {
-    line-height: 1.45;
-  }
-
-  .game__info,
-  .rail,
-  .achievements {
-    display: block;
-    margin-bottom: 4mm;
-  }
-
-  .rail {
-    margin-top: 3mm;
-  }
-
-  .rail__track {
-    overflow: visible;
-    flex-wrap: wrap;
-    gap: 3mm;
-    padding-bottom: 0;
-  }
-
-  .rail__item img {
-    width: auto;
-    height: 42mm;
-    max-width: 76mm;
-  }
-
-  .rail__item img[data-shape="wide"] {
-    width: 76mm;
-    height: 43mm;
-  }
-
-  .rail__item img[data-shape="tall"] {
-    width: 24mm;
-    height: 42mm;
-  }
-
-  .achievement__certificate {
-    position: static;
-    display: block;
-    width: min(100mm, 100%);
-    height: auto;
-    margin-top: 4mm;
-    opacity: 1;
-    pointer-events: auto;
-    border-radius: 4px;
-    border: 1px solid var(--line-strong);
-  }
-
-  .about__visual img {
-    transform: none !important;
-  }
-
-  .achievement__cta {
-    display: none !important;
-  }
-}
-
-@media print {
-  *, *::before, *::after { animation: none !important; transition: none !important; }
-  html, body { overflow: visible !important; }
-  body { opacity: 1 !important; transform: none !important; }
-  .hero__grid, .about__grid, .detail__hero { display: block; }
-  .hero__mark, .hero__orb, .back-link, .detail__nav { display: none !important; }
-  .detail__hero { padding: 6mm 0; }
-  .detail__icon { width: 28mm; margin-top: 4mm; }
-  .hero__title, .detail__title { font-size: 28pt; }
-  .detail__section { padding: 5mm 0; }
-  .section__head, .game__head, .detail__section-title { break-after: avoid; }
-  .rail__track { display: block; margin: 0; scroll-snap-type: none; }
-  .rail__item { display: inline-block; vertical-align: top; margin: 0 2mm 2mm 0; }
-  .rail__item img { object-fit: contain; }
-  .panels, .skills, .socials { display: block; }
-  .panel, .skill, .social { margin-bottom: 3mm; }
-}
-
 /* Quiet borders and restrained feedback keep the existing layout focused. */
 .hero { background: var(--ink); }
 .engine, .panel, .point, .achievement, .detail__icon { box-shadow: none; }
@@ -2159,16 +1937,29 @@ body.error-page .not-found-container1 {
 }
 
 /* One pill shape for text actions; square icon actions become circles. */
-.btn,
-.site-nav a,
-.theme-toggle,
-.pdf-button,
-.back-link,
-.rail__nav,
-.lightbox__close,
-.achievement,
-.detail__nav-link,
-.social,
-.not-found-link {
+.btn, .site-nav a, .theme-toggle, .back-link, .rail__nav,
+.lightbox__close, .achievement, .detail__nav-link, .social, .not-found-link {
   border-radius: var(--radius-button);
 }
+
+.game__icon { border-radius: 24px; overflow: hidden; }
+.detail__icon, .detail__nav-icon { border-radius: 22%; overflow: hidden; }
+.game__icon img, .detail__icon img { border-radius: inherit; }
+.rail__item { border-radius: 20px; }
+.language-slot { flex: none; }
+.language-switch { display: flex; align-items: center; gap: 2px; padding: 3px; height: 40px; border: 1px solid var(--line-strong); border-radius: 999px; background: var(--panel); }
+.language-option { display: flex; align-items: center; justify-content: center; width: 34px; height: 32px; border-radius: 999px; cursor: pointer; opacity: .48; transition: opacity .2s ease, background-color .2s ease, transform .2s ease; }
+.language-option[aria-pressed="true"] { opacity: 1; background: var(--tint-10); }
+.language-option:hover { opacity: 1; }
+.language-option:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.language-option img { width: 24px; height: 16px; border-radius: 3px; }
+.language-switch.is-switching .language-option[aria-pressed="true"] { animation: flag-switch .32s ease; }
+@keyframes flag-switch { 0% { transform: scale(.7) rotate(-12deg); } 60% { transform: scale(1.1) rotate(4deg); } 100% { transform: none; } }
+.language-slot--float { position: fixed; top: 20px; right: 76px; z-index: 80; }
+@media (max-width: 640px) { .site-header__inner { gap: 8px; } .brand__logo { width: 110px; } .site-nav__cta { padding: 9px 10px; } }
+@media (max-width: 360px) { .brand__logo { width: 92px; } .site-header__inner { padding-left: 12px; padding-right: 12px; } }
+@media (prefers-reduced-motion: reduce) { .language-switch.is-switching .language-option { animation: none; } }
+
+.lightbox.is-open img { opacity: 1; transform: scale(1); }
+
+.rail__item img { object-fit: contain; }
