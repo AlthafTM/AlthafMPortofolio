@@ -12,7 +12,7 @@
 
   function img(src, alt, className) {
     var node = document.createElement("img");
-    node.src = src;
+    if (src) node.src = src;
     node.alt = alt || "";
     node.loading = "lazy";
     node.decoding = "async";
@@ -450,31 +450,6 @@
     root.appendChild(wrap);
   }
 
-  function initReveal() {
-    var items = document.querySelectorAll(".reveal");
-    if (!("IntersectionObserver" in window)) {
-      items.forEach(function (node) {
-        node.classList.add("is-visible");
-      });
-      return;
-    }
-    var observer = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-          } else {
-            entry.target.classList.remove("is-visible");
-          }
-        });
-      },
-      { threshold: 0.05, rootMargin: "0px 0px -60px 0px" }
-    );
-    items.forEach(function (node) {
-      observer.observe(node);
-    });
-  }
-
   function initLightbox() {
     var box = el("div", "lightbox");
     box.setAttribute("role", "dialog");
@@ -498,7 +473,7 @@
       if (!box.classList.contains("is-open")) return;
       box.classList.remove("is-open");
       document.body.classList.remove("no-scroll");
-      image.src = "";
+      image.removeAttribute("src");
       frame.removeAttribute("src");
       box.classList.remove("is-pdf");
     }
@@ -604,7 +579,7 @@
 
   function initParallax() {
     var visual = document.querySelector("[data-parallax]");
-    if (!visual) return;
+    if (!visual || window.matchMedia("(prefers-reduced-motion: reduce), (pointer: coarse)").matches) return;
     var image = visual.querySelector("img");
     if (!image) return;
 
@@ -633,6 +608,7 @@
   }
 
   function initPageTransitions() {
+    window.addEventListener("pageshow", function () { document.body.classList.remove("page-fade-out"); });
     document.body.classList.add("page-ready");
     document.addEventListener("click", function (event) {
       var anchor = event.target.closest && event.target.closest("a");
@@ -647,10 +623,48 @@
   }
 
   function initPdfDownload() {
-    var buttons = document.querySelectorAll("[data-download-pdf]");
-    Array.prototype.forEach.call(buttons, function (button) {
-      button.addEventListener("click", function () {
-        window.print();
+    var buttons = Array.prototype.slice.call(document.querySelectorAll("[data-download-pdf]"));
+    var busy = false;
+    function prepareImages() {
+      return Promise.all(Array.prototype.map.call(document.images, function (image) {
+        if (!image.getAttribute("src")) return Promise.resolve();
+        image.loading = "eager";
+        return new Promise(function (resolve) {
+          if (image.complete) { resolve(); return; }
+          image.addEventListener("load", resolve, { once: true });
+          image.addEventListener("error", resolve, { once: true });
+        }).then(function () {
+          if (!image.naturalWidth) throw new Error("Image failed to load");
+          return image.decode ? image.decode().catch(function () {}) : undefined;
+        });
+      }));
+    }
+    window.addEventListener("beforeprint", prepareImages);
+    buttons.forEach(function (button) {
+      button.addEventListener("click", async function () {
+        if (busy) return;
+        busy = true;
+        var label = button.innerHTML;
+        buttons.forEach(function (item) { item.disabled = true; });
+        button.textContent = "Preparing PDF…";
+        var timeout;
+        try {
+          await Promise.race([
+            Promise.all([prepareImages(), document.fonts ? document.fonts.ready : Promise.resolve()]),
+            new Promise(function (_, reject) {
+              timeout = window.setTimeout(function () { reject(new Error("Loading timed out")); }, 20000);
+            })
+          ]);
+          await new Promise(function (resolve) { requestAnimationFrame(function () { requestAnimationFrame(resolve); }); });
+          window.print();
+        } catch (error) {
+          window.alert("Some images or fonts could not finish loading. Please check your connection and try downloading the PDF again.");
+        } finally {
+          window.clearTimeout(timeout);
+          button.innerHTML = label;
+          buttons.forEach(function (item) { item.disabled = false; });
+          busy = false;
+        }
       });
     });
   }
@@ -673,7 +687,6 @@
     } else {
       renderHome(data);
     }
-    initReveal();
     initLightbox();
     initHeader();
     initTheme();
