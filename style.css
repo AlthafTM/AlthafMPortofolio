@@ -460,7 +460,7 @@ a {
   z-index: 2;
   min-height: 80vh;
   display: grid;
-  grid-template-columns: 1.35fr 0.65fr;
+  grid-template-columns: minmax(0, 1fr);
   align-items: center;
   gap: 48px;
   padding-top: 96px;
@@ -468,7 +468,7 @@ a {
 }
 
 .hero__intro {
-  max-width: 760px;
+  max-width: 100%;
 }
 
 .hero__title {
@@ -478,7 +478,7 @@ a {
   font-size: clamp(2.6rem, 6vw, 5.2rem);
   line-height: 1.02;
   letter-spacing: -0.02em;
-  white-space: nowrap;
+  text-wrap: balance;
 }
 
 .hero__tagline {
@@ -1967,6 +1967,111 @@ body.error-page .not-found-container1 {
 .rail__item img { object-fit: contain; }
 
 @media (max-width: 640px) { .detail__nav-link--prev, .detail__nav-link--next { grid-column: 1; min-width: 0; } .detail__nav-text { min-width: 0; overflow-wrap: anywhere; } }
+
+/* Fluid layout between desktop, tablet and phone widths. */
+.wrap, .site-header__inner {
+  padding-left: clamp(16px, 3vw, 32px);
+  padding-right: clamp(16px, 3vw, 32px);
+}
+.wrap { max-width: calc(var(--wrap) + 64px); }
+.hero__grid {
+  min-height: min(680px, 76svh);
+  padding-block: clamp(64px, 8vw, 112px);
+}
+.hero__title { font-size: clamp(2.2rem, 6vw, 5.2rem); }
+.section { padding-block: clamp(48px, 6vw, 68px); }
+.game { grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr); column-gap: clamp(24px, 4vw, 48px); }
+.about__grid { gap: clamp(24px, 4vw, 42px); }
+.detail__hero { grid-template-columns: minmax(0, 1.35fr) minmax(0, .65fr); }
+.engine, .panel, .point, .skill, .detail__nav-link { min-width: 0; }
+.game__title, .detail__title, .engine__kicker, .panel__value, .point__text,
+.achievement__event, .detail__nav-title { overflow-wrap: anywhere; }
+.panels { grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr)); }
+.social { min-width: min(100%, 180px); }
+.rail { container-type: inline-size; }
+.rail__item img, .rail__item img[data-shape="wide"], .rail__item img[data-shape="tall"] {
+  width: min(calc(clamp(170px, 22vw, 260px) * var(--image-ratio, 1.6)), calc(100cqw - 8px));
+  height: auto;
+}
+section[id] { scroll-margin-top: 100px; }
+@media (max-width: 1024px) {
+  .game { grid-template-columns: minmax(0, 1fr); }
+  .about__grid { grid-template-columns: minmax(0, 1fr) minmax(0, .65fr); }
+  .about__lead, .engine { grid-column: 1; }
+  .about__lead { grid-row: 1; }
+  .engine { grid-row: 2; padding: 24px; }
+  .about__visual { grid-column: 2; grid-row: 1 / span 2; }
+  .detail__hero { grid-template-columns: minmax(0, 1fr) minmax(140px, .35fr); }
+  .detail__icon { width: min(100%, 180px); }
+  .site-header__inner { gap: 12px; }
+  .site-nav { gap: 4px; font-size: 14px; }
+  .site-nav a { padding: 10px 12px; }
+  .brand__logo { width: 145px; }
+}
+@media (max-width: 760px) {
+  .site-header__inner {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px 4px;
+    padding-block: 10px;
+  }
+  .brand { grid-column: 1 / span 2; grid-row: 1; justify-self: start; }
+  .brand__logo { width: clamp(110px, 20vw, 145px); }
+  .site-nav { display: contents; }
+  .site-nav a, .site-nav a:not(.site-nav__cta) {
+    display: flex;
+    grid-row: 2;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 4px;
+    min-height: 44px;
+    font-size: 13px;
+  }
+  .theme-toggle { grid-column: 3; grid-row: 1; justify-self: end; width: 44px; height: 44px; }
+  .language-slot { grid-column: 4; grid-row: 1; justify-self: end; }
+  .language-switch { height: 44px; }
+  .language-switch::before { top: 5px; }
+  .hero__grid { min-height: auto; padding-block: clamp(64px, 12vw, 90px); }
+  .hero__title { font-size: clamp(2.2rem, 7.5vw, 3.5rem); }
+  .hero__actions { margin-top: 28px; }
+  .about__grid, .detail__hero { grid-template-columns: minmax(0, 1fr); }
+  .about__lead, .engine { grid-column: 1; grid-row: auto; }
+  .about__visual { display: none; }
+  .detail__hero { gap: 24px; }
+  .detail__icon { width: 120px; }
+  .achievement { flex-wrap: wrap; padding: 18px 20px; border-radius: var(--radius); }
+  .achievement__main { flex-basis: 100%; }
+  .achievement__cta { margin-left: 40px; white-space: normal; }
+  .detail__nav { grid-template-columns: minmax(0, 1fr); }
+  .detail__nav-link--prev, .detail__nav-link--next { grid-column: 1; }
+  .detail__nav-link--next { justify-content: flex-start; text-align: left; }
+  .detail__nav-link { border-radius: var(--radius); padding: 18px; }
+  .btn, .back-link { min-height: 44px; }
+  .lightbox { padding: 72px 16px; }
+  .lightbox img { max-height: calc(100dvh - 144px); }
+  section[id] { scroll-margin-top: 122px; }
+}
+@media (max-width: 400px) {
+  .skill { flex-direction: column; align-items: stretch; gap: 12px; }
+  .skill__top { width: auto; }
+  .skill__meter { min-height: 6px; gap: 5px; }
+  .game__head { gap: 12px; }
+  .game__icon { width: 56px; height: 56px; border-radius: 16px; }
+  .game__meta { gap: 8px; }
+  .game__title { font-size: 1.5rem; }
+  .engine { padding: 20px; }
+  .engine__top { gap: 12px; }
+  .point { padding: 18px; gap: 12px; }
+}
+@media (hover: none) {
+  .rail__nav { opacity: 1; pointer-events: auto; width: 44px; height: 44px; }
+}
+/* Phones in landscape can be wider than the portrait breakpoint. */
+@media (max-width: 1024px) and (max-height: 500px) and (pointer: coarse) {
+  .about__visual { display: none; }
+  .about__grid { grid-template-columns: minmax(0, 1fr); }
+  .about__lead, .engine { grid-column: 1; grid-row: auto; }
+}
 
 /* Animate the icon separately so the page can crossfade as one surface. */
 .theme-toggle__icon { view-transition-name: theme-icon; }

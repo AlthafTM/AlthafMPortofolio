@@ -53,6 +53,7 @@
   function classifyRatio(im) {
     if (!im.naturalWidth || !im.naturalHeight) return;
     im.style.aspectRatio = im.naturalWidth + " / " + im.naturalHeight;
+    im.style.setProperty("--image-ratio", im.naturalWidth / im.naturalHeight);
     im.setAttribute("data-shape", im.naturalWidth >= im.naturalHeight ? "wide" : "tall");
   }
 

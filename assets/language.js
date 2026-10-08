@@ -49,7 +49,7 @@
       flagWrap.className = "language-flag language-flag--" + code;
       flagWrap.setAttribute("aria-hidden", "true");
       var flag = document.createElement("img");
-      flag.src = "public/flag-" + code + ".svg?v=us-20261008";
+      flag.src = "public/flag-" + code + ".svg?v=uk-20261009";
       flag.alt = "";
       flagWrap.appendChild(flag);
       button.appendChild(flagWrap);
