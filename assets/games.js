@@ -536,77 +536,6 @@
     onScroll();
   }
 
-  function initTheme() {
-    var root = document.documentElement;
-    var buttons = document.querySelectorAll(".theme-toggle");
-    if (!buttons.length) return;
-
-    function sync() {
-      var isLight = root.getAttribute("data-theme") === "light";
-      Array.prototype.forEach.call(buttons, function (btn) {
-        btn.setAttribute(
-          "aria-label",
-          isLight ? "Switch to dark mode" : "Switch to light mode"
-        );
-      });
-    }
-
-    Array.prototype.forEach.call(buttons, function (btn) {
-      btn.addEventListener("click", function () {
-        var isLight = root.getAttribute("data-theme") === "light";
-        function changeTheme() {
-          if (isLight) {
-            root.removeAttribute("data-theme");
-          } else {
-            root.setAttribute("data-theme", "light");
-          }
-          try {
-            localStorage.setItem("theme", isLight ? "dark" : "light");
-          } catch (e) {}
-          sync();
-        }
-
-        document.body.classList.add("theme-changing");
-        changeTheme();
-        window.setTimeout(function () {
-          document.body.classList.remove("theme-changing");
-        }, 520);
-      });
-    });
-
-    sync();
-  }
-
-  function initParallax() {
-    var visual = document.querySelector("[data-parallax]");
-    if (!visual || window.matchMedia("(prefers-reduced-motion: reduce), (pointer: coarse)").matches) return;
-    var image = visual.querySelector("img");
-    if (!image) return;
-
-    var frame = 0;
-    var pointerX = 0;
-    var pointerY = 0;
-    visual.addEventListener("pointermove", function (event) {
-      var rect = visual.getBoundingClientRect();
-      pointerX = (event.clientX - rect.left) / rect.width - 0.5;
-      pointerY = (event.clientY - rect.top) / rect.height - 0.5;
-      if (frame) return;
-      frame = requestAnimationFrame(function () {
-        frame = 0;
-        image.style.setProperty("--visual-x", (pointerX * 10).toFixed(2) + "px");
-        image.style.setProperty("--visual-y", (pointerY * 10).toFixed(2) + "px");
-        image.style.setProperty("--visual-rx", (-pointerY * 4).toFixed(2) + "deg");
-        image.style.setProperty("--visual-ry", (pointerX * 4).toFixed(2) + "deg");
-      });
-    });
-    visual.addEventListener("pointerleave", function () {
-      image.style.setProperty("--visual-x", "0px");
-      image.style.setProperty("--visual-y", "0px");
-      image.style.setProperty("--visual-rx", "0deg");
-      image.style.setProperty("--visual-ry", "0deg");
-    });
-  }
-
   function initPageTransitions() {
     window.addEventListener("pageshow", function () { document.body.classList.remove("page-fade-out"); });
     document.body.classList.add("page-ready");
@@ -689,8 +618,6 @@
     }
     initLightbox();
     initHeader();
-    initTheme();
-    initParallax();
     initPageTransitions();
     initPdfDownload();
   }

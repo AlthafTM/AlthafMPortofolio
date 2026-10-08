@@ -1,5 +1,5 @@
 /* ============================================================
-   Portfolio â€” playful dark Â· grey Â· white
+   Portfolio - clean monochrome
    ============================================================ */
 
 :root {
@@ -30,11 +30,11 @@
   --header-bg-scrolled: rgba(8, 8, 10, 0.86);
   --lightbox-bg: rgba(4, 4, 6, 0.92);
   --pill-bg: rgba(10, 10, 12, 0.82);
-  --radius: 18px;
-  --radius-sm: 12px;
+  --radius: 12px;
+  --radius-sm: 8px;
   --wrap: 1180px;
   --shadow: 0 24px 60px -30px rgba(0, 0, 0, 0.85);
-  --ease-pop: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-pop: cubic-bezier(0.2, 0.8, 0.2, 1);
   --font-head: "Bricolage Grotesque", "Inter", system-ui, sans-serif;
   --font-body: "Schibsted Grotesk", "Inter", system-ui, sans-serif;
 }
@@ -107,12 +107,16 @@ body.page-fade-out {
   transition: opacity 0.38s ease;
 }
 
-body.theme-changing * {
-  transition-property: background, background-color, color, border-color,
-    box-shadow, fill, stroke, opacity !important;
-  transition-duration: 0.38s !important;
-  transition-timing-function: ease !important;
+/* Theme colors change atomically; the whole viewport crossfades together. */
+html.theme-changing *, html.theme-changing *::before, html.theme-changing *::after {
+  transition: none !important;
 }
+::view-transition-old(root), ::view-transition-new(root) {
+  animation-duration: 240ms;
+  animation-timing-function: ease-in-out;
+}
+:root { color-scheme: dark; }
+:root[data-theme="light"] { color-scheme: light; }
 
 @keyframes pageFadeIn {
   from { opacity: 0; }
@@ -201,11 +205,11 @@ a {
 .brand__logo {
   width: 172px;
   height: auto;
-  transition: transform 0.4s var(--ease-pop);
+  transform: none;
 }
 
 .brand:hover .brand__logo {
-  transform: rotate(-3deg) scale(1.05);
+  transform: none;
 }
 
 .site-nav {
@@ -373,7 +377,7 @@ a {
   justify-content: center;
   gap: 8px;
   padding: 13px 28px;
-  border-radius: 999px;
+  border-radius: 8px;
   font-family: var(--font-head);
   font-size: 14px;
   font-weight: 600;
@@ -385,19 +389,7 @@ a {
     color 0.25s ease, border-color 0.25s ease, box-shadow 0.3s ease;
 }
 
-.btn::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    120px 60px at var(--mx, 50%) var(--my, 50%),
-    rgba(0, 0, 0, 0.14),
-    transparent 70%
-  );
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-}
+.btn::after { display: none; }
 
 .btn:hover::after {
   opacity: 1;
@@ -443,55 +435,16 @@ a {
   position: relative;
   overflow: hidden;
   border-bottom: 1px solid var(--line);
-  background:
-    radial-gradient(760px 420px at 88% 24%, rgba(var(--tint), 0.08), transparent 62%),
-    linear-gradient(180deg, var(--navy) 0%, var(--ink) 100%);
+  background: var(--panel);
   transition: border-color 0.48s ease;
-  view-transition-name: portfolio-hero;
 }
 
-::view-transition-old(portfolio-hero),
-::view-transition-new(portfolio-hero) {
-  animation-duration: 0.34s;
-  animation-timing-function: ease-in-out;
-}
 
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    100deg,
-    var(--hero-scrim) 0%,
-    var(--hero-scrim-mid) 34%,
-    transparent 62%
-  );
-  pointer-events: none;
-  z-index: 1;
-}
+.hero::before { display: none; }
 
-.hero__glow {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(var(--line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--line) 1px, transparent 1px);
-  background-size: 64px 64px;
-  -webkit-mask-image: radial-gradient(560px 320px at 78% 26%, #000 0%, transparent 72%);
-  mask-image: radial-gradient(560px 320px at 78% 26%, #000 0%, transparent 72%);
-  opacity: 0.18;
-  transition: opacity 0.48s ease;
-  pointer-events: none;
-}
+.hero__glow { display: none; }
 
-.blob {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(56px);
-  opacity: 0.2;
-  transition: opacity 0.48s ease;
-  pointer-events: none;
-}
+.blob { display: none; }
 
 .blob--1 {
   width: 360px;
@@ -499,7 +452,7 @@ a {
   top: -90px;
   right: 6%;
   background: var(--tint-10);
-  animation: float1 14s ease-in-out infinite;
+  animation: none;
 }
 
 .blob--2 {
@@ -508,7 +461,7 @@ a {
   bottom: -70px;
   right: 26%;
   background: rgba(var(--tint), 0.05);
-  animation: float2 18s ease-in-out infinite;
+  animation: none;
 }
 
 @keyframes float1 {
@@ -578,14 +531,7 @@ a {
   min-height: 420px;
 }
 
-.hero__mark-halo {
-  position: absolute;
-  width: min(420px, 90%);
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: radial-gradient(circle, var(--tint-16), transparent 62%);
-  animation: pulse 10s ease-in-out infinite;
-}
+.hero__mark-halo { display: none; }
 
 .hero__mark img {
   position: relative;
@@ -593,7 +539,7 @@ a {
   height: auto;
   opacity: 0.9;
   filter: drop-shadow(0 0 40px rgba(var(--tint), 0.25));
-  animation: bob 7s ease-in-out infinite;
+  animation: none;
 }
 
 @keyframes pulse {
@@ -687,13 +633,7 @@ a {
   perspective: 800px;
 }
 
-.about__visual::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: radial-gradient(circle at 50% 45%, transparent 20%, rgba(var(--tint), 0.08));
-}
+.about__visual::after { display: none; }
 
 .about__visual img {
   position: relative;
@@ -927,23 +867,7 @@ a {
   outline: none;
 }
 
-.badge::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -140%;
-  width: 60%;
-  height: 100%;
-  background: linear-gradient(
-    100deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.55) 50%,
-    transparent 100%
-  );
-  transform: skewX(-18deg);
-  pointer-events: none;
-  transition: left 0.7s cubic-bezier(0.19, 1, 0.22, 1);
-}
+.badge::after { display: none; }
 
 .badge:hover::after,
 .badge:focus-visible::after {
@@ -1175,11 +1099,11 @@ a {
 
 .skill__seg.is-on {
   background: var(--accent);
-  box-shadow: 0 0 12px -2px rgba(var(--tint), 0.55);
+  box-shadow: none;
 }
 
 .skill:hover .skill__seg.is-on {
-  box-shadow: 0 0 16px 0 rgba(var(--tint), 0.7);
+  box-shadow: none;
 }
 
 /* ---------- Socials ---------- */
@@ -1334,7 +1258,7 @@ a {
   border: 1px solid var(--line-strong);
   background: var(--panel-2);
   box-shadow: var(--shadow);
-  animation: bob 7s ease-in-out infinite;
+  animation: none;
 }
 
 .detail__icon img {
@@ -1363,7 +1287,7 @@ a {
 
 .panel {
   padding: 24px;
-  background: linear-gradient(160deg, var(--panel-2), var(--panel));
+  background: var(--panel);
   border: 1px solid var(--line);
   border-radius: var(--radius);
   transition: transform 0.3s var(--ease-pop), border-color 0.3s ease;
@@ -1466,7 +1390,7 @@ a {
   padding: 18px 24px;
   border-radius: var(--radius);
   border: 1px solid var(--line);
-  background: linear-gradient(160deg, var(--panel-2), var(--panel));
+  background: var(--panel);
   color: var(--text);
   font-family: inherit;
   cursor: pointer;
@@ -1804,9 +1728,7 @@ a {
 
 body.error-page .not-found-container1 {
   min-height: 100vh;
-  background:
-    radial-gradient(900px 480px at 50% -10%, var(--tint-8), transparent 60%),
-    linear-gradient(180deg, var(--navy) 0%, var(--ink) 100%);
+  background: var(--panel);
 }
 
 /* ---------- Responsive: iPad / tablet ---------- */
@@ -2218,4 +2140,19 @@ body.error-page .not-found-container1 {
   .rail__item img { object-fit: contain; }
   .panels, .skills, .socials { display: block; }
   .panel, .skill, .social { margin-bottom: 3mm; }
+}
+
+/* Quiet borders and restrained feedback keep the existing layout focused. */
+.hero { background: var(--ink); }
+.engine, .panel, .point, .achievement, .detail__icon { box-shadow: none; }
+.engine:hover, .skill:hover, .social:hover, .panel:hover, .point:hover,
+.achievement:hover, .badge:hover, .badge:focus-visible, .rail__item:hover,
+.detail__nav-link:hover { transform: none; }
+.btn:hover { transform: translateY(-1px); }
+.btn--solid:hover { box-shadow: none; }
+.about__visual img, .about__visual:hover img { transform: none; filter: none; }
+.detail__icon { border-radius: var(--radius); }
+.site-footer { border-top: 1px solid var(--line); }
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root), ::view-transition-new(root) { animation: none; }
 }
