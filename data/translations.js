@@ -8,7 +8,7 @@ window.PORTFOLIO_ID = {
   "Skip to content": "Lewati ke konten",
   "My Portfolio": "Portofolio Saya",
   "Hi, I'm Althaf Tristan M.": "Halo, saya Althaf Tristan M.",
-  "Young Game Developer": "Pengembang Game Muda",
+  "I'm a Young Game Developer!": "Saya seorang pengembang game muda!",
   "View work": "Lihat karya",
   "About Me": "Tentang Saya",
   "Background": "Latar Belakang",

@@ -304,7 +304,6 @@
       });
     }
 
-    document.title = data.site.name + " — " + data.site.role;
   }
 
   function detailPanel(label, value) {
