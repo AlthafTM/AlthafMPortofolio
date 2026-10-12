@@ -1,6 +1,7 @@
 (function () {
   "use strict";
   var language = "en";
+  var publicURL = new URL("../public/", document.currentScript.src);
   try { if (localStorage.getItem("language") === "id") language = "id"; } catch (error) {}
   var originals = new WeakMap();
   var attributes = new WeakMap();
@@ -49,7 +50,7 @@
       flagWrap.className = "language-flag language-flag--" + code;
       flagWrap.setAttribute("aria-hidden", "true");
       var flag = document.createElement("img");
-      flag.src = "public/flag-" + code + ".svg?v=uk-20261009";
+      flag.src = new URL("flag-" + code + ".svg?v=uk-20261009", publicURL).href;
       flag.alt = "";
       flagWrap.appendChild(flag);
       button.appendChild(flagWrap);

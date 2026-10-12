@@ -34,7 +34,7 @@
       html {  line-height: 1.15;}body {  margin: 0;}* {  box-sizing: border-box;  border-width: 0;  border-style: solid;  -webkit-font-smoothing: antialiased;}p,li,ul,pre,div,h1,h2,h3,h4,h5,h6,figure,blockquote,figcaption {  margin: 0;  padding: 0;}button {  background-color: transparent;}button,input,optgroup,select,textarea {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}button,select {  text-transform: none;}button,[type="button"],[type="reset"],[type="submit"] {  -webkit-appearance: button;  color: inherit;}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {  border-style: none;  padding: 0;}a {  color: inherit;  text-decoration: inherit;}pre {  white-space: normal;}img {  display: block;  max-width: 100%;}html {  scroll-behavior: smooth;}
     </style>
 
-    <link rel="stylesheet" href="./style.css?v=b36397b833a2" />
+    <link rel="stylesheet" href="./style.css?v=4c346a18973d" />
   </head>
   <body data-page="home">
     <script>
@@ -92,6 +92,7 @@
             <p class="hero__tagline">I'm a Young Game Developer!</p>
             <div class="hero__actions">
               <a class="btn btn--solid" href="#work">View work</a>
+              <a class="btn btn--ghost" href="#current">View current project</a>
             </div>
           </div>
         </div>
@@ -107,7 +108,8 @@
             <p class="about__lead reveal">
               Hi everyone! My name is Althaf Tristan Maheswara. I'm from Indonesia
               and currently 19 years old. This is my portfolio, featuring games
-              and projects I've created over the past few years. Most are finished
+              and projects I've created over the past few years, alongside the
+              games and prototypes I'm currently working on. Most are finished
               or polished enough to share publicly.
             </p>
             <div class="engine reveal">
@@ -143,25 +145,25 @@
           </div>
           <article class="current" id="current-project">
             <div class="current__intro">
-              <h3 class="game__title">PixelScenePrototype</h3>
-              <p class="current__desc">This is what I'm currently working on: a 3D pixel game designed for smooth, 60+ FPS browser gameplay on supported devices. Explore the scene and adjust the seasons, time of day, and other settings.</p>
+              <p class="current__desc">I'm currently working on a 3D pixel game that runs smoothly while looking great. Explore the scene and experiment with the seasons, time of day, and other settings.</p>
               <p class="current__controls current__controls--desktop">Use WASD to move and the mouse to look around.</p>
               <p class="current__controls current__controls--touch">Drag with one finger to move. Use two fingers to rotate and pinch to zoom. Tap the settings tabs to adjust the scene.</p>
             </div>
             <div class="current__stage" id="prototype-stage">
-              <img class="current__preview" src="public/pixel-scene/preview.webp" alt="PixelScenePrototype: a sunlit pixel scenery with grass, flowers, and colorful cubes" width="1178" height="521" decoding="async" />
+              <img class="current__preview" src="public/pixel-scene/cover.webp" alt="A sunlit 3D pixel scene with grass, flowers, and colorful cubes" width="2558" height="1443" loading="lazy" decoding="async" />
               <div class="current__overlay">
-                <p class="current__status" id="prototype-status" role="status">Checking your device…</p>
+                <button class="btn btn--solid current__play" id="prototype-play" type="button"><span class="current__play-icon" aria-hidden="true">▶</span><span>Play demo</span></button>
+                <p class="current__status" id="prototype-status" role="status">Press Play to explore the demo.</p>
                 <progress id="prototype-progress" max="1" value="0" aria-label="Game loading progress" hidden></progress>
               </div>
             </div>
             <div class="current__toolbar">
               <div class="current__actions">
-                <button class="btn btn--solid" id="prototype-play" type="button">Load demo</button>
                 <button class="btn btn--ghost" id="prototype-stop" type="button" hidden>Stop demo</button>
-                <button class="btn btn--ghost" id="prototype-fullscreen" type="button" hidden>Fullscreen</button>
+                <button class="btn btn--solid current__fullscreen" id="prototype-fullscreen" type="button" disabled><span aria-hidden="true">⛶</span><span>Fullscreen</span></button>
+                <a class="btn btn--ghost" href="./play/">Open play page</a>
               </div>
-              <p class="current__note">The demo loads automatically on capable devices and stops if performance drops. A compatible browser is required.</p>
+              <p class="current__note">Press Play to start the demo. Use fullscreen for a larger view.</p>
             </div>
           </article>
         </div>
@@ -209,9 +211,9 @@
     </script>
     <script src="./data/games.js?v=0b49d37ef3ac"></script>
     <script src="./assets/games.js?v=509465971962"></script>
-    <script src="./data/translations.js?v=96bb1f0843a5"></script>
-    <script src="./assets/language.js?v=9ce03d39b646"></script>
+    <script src="./data/translations.js?v=f1dbd9fe2b91"></script>
+    <script src="./assets/language.js?v=5a7a1a3caee6"></script>
     <script src="./assets/theme.js?v=d98b5a925136" defer></script>
-    <script src="./assets/current-project.js?v=23cae1089d90" defer></script>
+    <script src="./assets/current-project.js?v=de6ab10d5ad8" defer></script>
   </body>
 </html>

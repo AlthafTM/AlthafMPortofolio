@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Play - Althaf M - Portofolio</title>
+    <meta
+      name="description"
+      content="Althaf Tristan Maheswara - game developer building with Unity Engine. Game portfolio: Bounce!, RogueBlast: Pixel Puzzle, Undertaker, and Exsilva Project."
+    />
+    <meta name="theme-color" content="#0b0b0d" />
+    <meta property="og:title" content="Althaf M - Portofolio" />
+    <meta
+      property="og:description"
+      content="Unity game developer. Bounce!, RogueBlast: Pixel Puzzle, and Undertaker."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="twitter:card" content="summary_large_image" />
+
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="../public/favicon.svg"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <style data-tag="reset-style-sheet">
+      html {  line-height: 1.15;}body {  margin: 0;}* {  box-sizing: border-box;  border-width: 0;  border-style: solid;  -webkit-font-smoothing: antialiased;}p,li,ul,pre,div,h1,h2,h3,h4,h5,h6,figure,blockquote,figcaption {  margin: 0;  padding: 0;}button {  background-color: transparent;}button,input,optgroup,select,textarea {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}button,select {  text-transform: none;}button,[type="button"],[type="reset"],[type="submit"] {  -webkit-appearance: button;  color: inherit;}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {  border-style: none;  padding: 0;}a {  color: inherit;  text-decoration: inherit;}pre {  white-space: normal;}img {  display: block;  max-width: 100%;}html {  scroll-behavior: smooth;}
+    </style>
+
+    <link rel="stylesheet" href="../style.css?v=4c346a18973d" />
+  </head>
+<body data-page="play"><script>
+      (function () {
+        try {
+          var stored = localStorage.getItem("theme");
+          if (stored === "light") {
+            document.documentElement.setAttribute("data-theme", "light");
+          }
+        } catch (e) {}
+      })();
+    </script>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="play-header wrap"><a class="btn btn--ghost" href="../#current">Back to portfolio</a><div class="play-header__controls"><button
+            class="theme-toggle"
+            type="button"
+            aria-label="Toggle light and dark mode"
+            title="Toggle theme"
+          >
+            <span class="theme-toggle__icon" aria-hidden="true">
+              <svg class="theme-toggle__moon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="currentColor"/></svg>
+              <svg class="theme-toggle__sun" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="4.5" fill="currentColor"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6"/></g></svg>
+            </span>
+          </button><div class="language-slot"></div></div></header>
+<main id="main" class="wrap play-page"><div class="section__head"><h1 class="section__title">Current Project</h1></div><article class="current" id="current-project">
+            <div class="current__intro">
+              <p class="current__desc">I'm currently working on a 3D pixel game that runs smoothly while looking great. Explore the scene and experiment with the seasons, time of day, and other settings.</p>
+              <p class="current__controls current__controls--desktop">Use WASD to move and the mouse to look around.</p>
+              <p class="current__controls current__controls--touch">Drag with one finger to move. Use two fingers to rotate and pinch to zoom. Tap the settings tabs to adjust the scene.</p>
+            </div>
+            <div class="current__stage" id="prototype-stage" data-autoplay="true">
+              <img class="current__preview" src="../public/pixel-scene/cover.webp" alt="A sunlit 3D pixel scene with grass, flowers, and colorful cubes" width="2558" height="1443" loading="lazy" decoding="async" />
+              <div class="current__overlay">
+                <button class="btn btn--solid current__play" id="prototype-play" type="button"><span class="current__play-icon" aria-hidden="true">▶</span><span>Play demo</span></button>
+                <p class="current__status" id="prototype-status" role="status">Press Play to explore the demo.</p>
+                <progress id="prototype-progress" max="1" value="0" aria-label="Game loading progress" hidden></progress>
+              </div>
+            </div>
+            <div class="current__toolbar">
+              <div class="current__actions">
+                <button class="btn btn--ghost" id="prototype-stop" type="button" hidden>Stop demo</button>
+                <button class="btn btn--solid current__fullscreen" id="prototype-fullscreen" type="button" disabled><span aria-hidden="true">⛶</span><span>Fullscreen</span></button>
+                
+              </div>
+              <p class="current__note">The demo starts automatically on this page. Use fullscreen for a larger view.</p>
+            </div>
+          </article></main>
+<script src="../data/translations.js?v=f1dbd9fe2b91"></script><script src="../assets/language.js?v=5a7a1a3caee6"></script><script src="../assets/theme.js?v=d98b5a925136" defer></script><script src="../assets/current-project.js?v=de6ab10d5ad8" defer></script>
+</body></html>

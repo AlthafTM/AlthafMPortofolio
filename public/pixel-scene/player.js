@@ -2,7 +2,7 @@
   "use strict";
   var canvas = document.getElementById("unity-canvas");
   var prepared = null, instance = null, starting = false, active = false;
-  var objectURLs = [], startedAt = 0, slowSamples = 0, lastSample = 0;
+  var objectURLs = [], lastProgress = 0;
   function notify(type, extra) {
     parent.postMessage(Object.assign({ source: "pixel-scene", type: type }, extra), location.origin);
   }
@@ -62,8 +62,6 @@
         errorHandler: function (message) { fail(message); return true; }
       }, function (value) { notify("progress", { value: 0.8 + value * 0.2 }); });
       objectURLs.forEach(URL.revokeObjectURL); objectURLs = [];
-      startedAt = performance.now();
-      lastSample = startedAt;
       notify("ready");
     } catch (error) { fail(error); }
   }
@@ -71,25 +69,11 @@
     if (event.source !== parent || event.origin !== location.origin || !event.data || event.data.source !== "portfolio") return;
     if (event.data.type === "visibility") {
       active = Boolean(event.data.visible);
-      slowSamples = 0;
-      lastSample = performance.now();
       start();
     } else if (event.data.type === "fullscreen" && instance) {
       instance.SetFullscreen(1);
     }
   });
-  setInterval(function () {
-    var now = performance.now();
-    if (!instance || !active || document.hidden || now - startedAt < 12000) { lastSample = now; return; }
-    try {
-      var metrics = instance.GetMetricsInfo();
-      var fps = metrics.movingAverageFps || metrics.fps;
-      // Ignore startup and brief hitches. Unload after three poor two-second windows.
-      slowSamples = (Number.isFinite(fps) && fps < 25) || now - lastSample > 3500 ? slowSamples + 1 : 0;
-      if (slowSamples >= 3) notify("slow");
-    } catch (error) { /* Metrics can be unavailable briefly during scene startup. */ }
-    lastSample = now;
-  }, 2000);
   (async function () {
     if (!navigator.gpu || !window.DecompressionStream) throw Error("Required browser features unavailable");
     var response = await fetch("build.json", { cache: "no-cache" });
@@ -99,7 +83,10 @@
     await Promise.all(Object.keys(manifest).map(async function (name) {
       blobs[name] = await download(manifest[name], function (bytes) {
         loaded[name] = bytes;
-        notify("progress", { value: Math.min(0.8, Object.values(loaded).reduce(function (sum, n) { return sum + n; }, 0) / total * 0.8) });
+        if (performance.now() - lastProgress >= 100) {
+          lastProgress = performance.now();
+          notify("progress", { value: Math.min(0.8, Object.values(loaded).reduce(function (sum, n) { return sum + n; }, 0) / total * 0.8) });
+        }
       });
     }));
     prepared = { manifest: manifest, blobs: blobs };
