@@ -5,7 +5,7 @@
   var originals = new WeakMap();
   var attributes = new WeakMap();
   // Translate controls and descriptive copy; preserve all headings and project names.
-  var copySelector = ".skip-link, .not-found-link, .site-nav, .btn, .back-link, .detail__nav-label, .achievement__cta, .about__lead, .engine__text, .game__desc, .detail__desc, .panel__value, .point__text, .lightbox__hint, .detail__missing p, .load-error p, .not-found-text3";
+  var copySelector = ".skip-link, .not-found-link, .site-nav, .btn, .back-link, .detail__nav-label, .achievement__cta, .about__lead, .engine__text, .game__desc, .detail__desc, .panel__value, .point__text, .lightbox__hint, .detail__missing p, .load-error p, .not-found-text3, .current__desc, .current__controls, .current__note";
   function translate(text) {
     if (language === "en") return text;
     var key = text.trim().replace(/\s+/g, " ");
