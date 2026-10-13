@@ -273,7 +273,7 @@
       skills.forEach(function (item) {
         var li = el("li", "skill reveal");
         var top = el("div", "skill__top");
-        top.appendChild(img(item.icon, "", "skill__icon"));
+        top.appendChild(img(item.icon, "", "skill__icon" + (item.iconTheme === "original" ? " skill__icon--original" : "")));
         top.appendChild(el("span", "skill__name", item.name));
         li.appendChild(top);
 

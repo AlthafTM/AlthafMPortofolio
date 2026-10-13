@@ -205,12 +205,13 @@ window.GAMES_DATA = {
     {
       "name": "C#",
       "icon": "public/LogoCsharpsvg12012-u6me.png",
+      "iconTheme": "original",
       "level": 3
     },
     {
       "name": "C++",
       "icon": "public/bxlcplusplus12012-b5jr.svg",
-      "level": 3
+      "level": 4
     },
     {
       "name": "FL Studio",

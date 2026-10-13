@@ -79,7 +79,7 @@ html {
 :root[data-theme="light"] .brand__logo,
 :root[data-theme="light"] .hero__mark img,
 :root[data-theme="light"] .engine__badge img,
-:root[data-theme="light"] .skill__icon,
+:root[data-theme="light"] .skill__icon:not(.skill__icon--original),
 :root[data-theme="light"] .social img,
 :root[data-theme="light"] .achievement__trophy,
 :root[data-theme="light"] .bxl-invert {
