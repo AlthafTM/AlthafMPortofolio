@@ -540,6 +540,9 @@
     mount.appendChild(box);
   }
 
+  // Music-origin navigation reuses the document so the audio never restarts.
+  window.PortfolioGames = { renderDetail: function (id) { renderGame(window.GAMES_DATA, id); } };
+
   function start(data) {
     var page = document.body.getAttribute("data-page");
     if (page === "game") {
