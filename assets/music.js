@@ -44,7 +44,7 @@
   function icon(toggle, playing, title) {
     toggle.setAttribute("aria-label", tr(playing ? "Pause" : "Play") + " " + title);
     toggle.setAttribute("aria-pressed", String(playing));
-    toggle.innerHTML = playing ? '<span aria-hidden="true">Ⅱ</span>' : '<span aria-hidden="true">▶</span>';
+    toggle.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="currentColor">' + (playing ? '<rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/>' : '<path d="M8 5.5a1 1 0 0 1 1.5-.86l10 6.5a1 1 0 0 1 0 1.72l-10 6.5A1 1 0 0 1 8 18.5z"/>') + '</svg>';
   }
   function dockVisibility() {
     var visible = false;
@@ -101,7 +101,7 @@
     var game = node("a", "soundtrack__game"); game.href = "game.html?id=exsilva";
     var image = node("img"); image.src = "public/exsilva-logo.webp"; image.alt = ""; image.width = 56; image.height = 56; image.loading = "lazy";
     var gameText = node("span", "soundtrack__game-text"); gameText.append(node("span", "soundtrack__credit", "Created for"), node("strong", "", "Exsilva Project"));
-    game.append(image, gameText, node("span", "soundtrack__arrow", "↗")); row.append(main, game); mount.appendChild(row);
+    game.append(image, gameText, node("span", "soundtrack__arrow", "→")); row.append(main, game); mount.appendChild(row);
     control.addEventListener("click", function () { toggle(player); });
     volume.addEventListener("input", function () { audio.volume = Number(volume.value); });
     audio.addEventListener("loadedmetadata", function () { update(player); }); audio.addEventListener("timeupdate", function () { update(player); });

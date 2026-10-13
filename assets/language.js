@@ -5,8 +5,8 @@
   try { if (localStorage.getItem("language") === "id") language = "id"; } catch (error) {}
   var originals = new WeakMap();
   var attributes = new WeakMap();
-  // Translate controls and descriptive copy; preserve all headings and project names.
-  var copySelector = ".skip-link, .not-found-link, .site-nav, .btn, .back-link, .detail__nav-label, .achievement__cta, .about__lead, .engine__text, .game__desc, .detail__desc, .panel__value, .point__text, .lightbox__hint, .detail__missing p, .load-error p, .not-found-text3, .current__desc, .current__controls, .current__note, .music__intro, .soundtrack__credit";
+  // Translate controls and descriptive copy; translate the hero introduction but preserve project names and other headings.
+  var copySelector = ".hero__title, .hero__tagline, .skip-link, .not-found-link, .site-nav, .btn, .back-link, .detail__nav-label, .achievement__cta, .about__lead, .engine__text, .game__desc, .detail__desc, .panel__value, .point__text, .lightbox__hint, .detail__missing p, .load-error p, .not-found-text3, .current__desc, .current__controls, .current__note, .music__intro, .soundtrack__credit";
   function translate(text) {
     if (language === "en") return text;
     var key = text.trim().replace(/\s+/g, " ");
@@ -16,10 +16,21 @@
   }
   function apply() {
     document.documentElement.lang = language;
+    document.querySelectorAll(".current__desc").forEach(function (paragraph) {
+      if (!originals.has(paragraph)) originals.set(paragraph, paragraph.textContent);
+      var parts = translate(originals.get(paragraph)).split("t3ssel8r");
+      if (parts.length !== 2) { paragraph.textContent = parts.join("t3ssel8r"); return; }
+      var credit = document.createElement("a");
+      credit.href = "https://www.youtube.com/@t3ssel8r";
+      credit.target = "_blank";
+      credit.rel = "noopener noreferrer";
+      credit.textContent = "t3ssel8r";
+      paragraph.replaceChildren(document.createTextNode(parts[0]), credit, document.createTextNode(parts[1]));
+    });
     var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
     var node;
     while ((node = walker.nextNode())) {
-      if (node.parentElement.closest("script, style, .language-switch") || !node.parentElement.closest(copySelector)) continue;
+      if (node.parentElement.closest("script, style, .language-switch, .current__desc") || !node.parentElement.closest(copySelector)) continue;
       if (!originals.has(node)) originals.set(node, node.nodeValue);
       node.nodeValue = translate(originals.get(node));
     }

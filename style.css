@@ -2149,6 +2149,7 @@ section[id] { scroll-margin-top: 100px; }
 .soundtrack__controls { display: flex; align-items: center; gap: 16px; margin-top: 22px; }
 .soundtrack__toggle { flex: none; width: 48px; height: 48px; border-radius: 50%; background: var(--accent); color: var(--ink); cursor: pointer; font-size: 18px; transition: transform .2s ease; }
 .soundtrack__toggle:hover { transform: scale(1.06); }
+.soundtrack__toggle svg { display: block; width: 23px; height: 23px; margin: auto; }
 .soundtrack__toggle:focus-visible { outline: 2px solid var(--text); outline-offset: 4px; }
 .soundtrack__waveform { position: relative; flex: 1; min-width: 0; height: 48px; border-radius: 8px; }
 .soundtrack__bars { position: absolute; inset: 4px 0; display: flex; gap: 3px; align-items: center; }
@@ -2216,3 +2217,9 @@ html.theme-changing:not(.theme-snapshot) .theme-toggle__sun {
 .music-dock__wave .soundtrack__waveform { height: 32px; }
 .music-dock__wave .soundtrack__bars { gap: 1px; }
 @media (prefers-reduced-motion: reduce) { .soundtrack__equalizer i { animation: none; } .music-dock, .soundtrack__preview { transition: none; } }
+/* Reversible entrance/exit motion, without changing the page layout. */
+.scroll-pop { opacity: 0; transform: translateY(18px) scale(.98); transition: opacity .4s ease, transform .45s cubic-bezier(.2,.7,.2,1), background-color .2s ease, border-color .2s ease; }
+.scroll-pop.is-in-view, .scroll-pop:focus-within { opacity: 1; transform: none; }
+.current__desc a { color: var(--text); text-decoration: underline; text-underline-offset: .18em; text-decoration-thickness: 1px; }
+.current__desc a:hover { text-decoration-thickness: 2px; }
+@media (prefers-reduced-motion: reduce) { .scroll-pop { opacity: 1; transform: none; transition: none; } }
