@@ -34,7 +34,7 @@
       html {  line-height: 1.15;}body {  margin: 0;}* {  box-sizing: border-box;  border-width: 0;  border-style: solid;  -webkit-font-smoothing: antialiased;}p,li,ul,pre,div,h1,h2,h3,h4,h5,h6,figure,blockquote,figcaption {  margin: 0;  padding: 0;}button {  background-color: transparent;}button,input,optgroup,select,textarea {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}button,select {  text-transform: none;}button,[type="button"],[type="reset"],[type="submit"] {  -webkit-appearance: button;  color: inherit;}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {  border-style: none;  padding: 0;}a {  color: inherit;  text-decoration: inherit;}pre {  white-space: normal;}img {  display: block;  max-width: 100%;}html {  scroll-behavior: smooth;}
     </style>
 
-    <link rel="stylesheet" href="./style.css?v=4c346a18973d" />
+    <link rel="stylesheet" href="./style.css?v=aefe769ecbb2" />
   </head>
   <body data-page="home">
     <script>
@@ -107,10 +107,10 @@
           <div class="about__grid">
             <p class="about__lead reveal">
               Hi everyone! My name is Althaf Tristan Maheswara. I'm from Indonesia
-              and currently 19 years old. This is my portfolio, featuring games
-              and projects I've created over the past few years, alongside the
-              games and prototypes I'm currently working on. Most are finished
-              or polished enough to share publicly.
+              and currently 19 years old. This portfolio brings together games
+              and projects I've created over the past few years, along with current
+              games and prototypes, music, and other creative work. Most are
+              finished or polished enough to share publicly.
             </p>
             <div class="engine reveal">
               <div class="engine__top">
@@ -145,12 +145,12 @@
           </div>
           <article class="current" id="current-project">
             <div class="current__intro">
-              <p class="current__desc">I'm currently working on a 3D pixel game that runs smoothly while looking great. Explore the scene and experiment with the seasons, time of day, and other settings.</p>
+              <p class="current__desc">I'm currently working on a 3D pixel game inspired by t3ssel8r, designed for 60+ FPS in the browser. I'm still prototyping the game's look and atmosphere. Explore the scene and experiment with the seasons, time of day, camera angles, and other settings.</p>
               <p class="current__controls current__controls--desktop">Use WASD to move and the mouse to look around.</p>
               <p class="current__controls current__controls--touch">Drag with one finger to move. Use two fingers to rotate and pinch to zoom. Tap the settings tabs to adjust the scene.</p>
             </div>
             <div class="current__stage" id="prototype-stage">
-              <img class="current__preview" src="public/pixel-scene/cover.webp" alt="A sunlit 3D pixel scene with grass, flowers, and colorful cubes" width="2558" height="1443" loading="lazy" decoding="async" />
+              <img class="current__preview" src="public/pixel-scene/cover-20261013.webp" alt="A sunlit 3D pixel scene with grass, flowers, and colorful cubes" width="2558" height="1599" loading="lazy" decoding="async" />
               <div class="current__overlay">
                 <button class="btn btn--solid current__play" id="prototype-play" type="button"><span class="current__play-icon" aria-hidden="true">▶</span><span>Play demo</span></button>
                 <p class="current__status" id="prototype-status" role="status">Press Play to explore the demo.</p>
@@ -176,6 +176,18 @@
             <h2 class="section__title">Game Overview</h2>
           </div>
           <div class="games" id="games"></div>
+        </div>
+      </section>
+
+      <section class="section" id="music">
+        <div class="wrap">
+          <div class="section__head">
+            <p class="eyebrow">Original Music</p>
+            <h2 class="section__title">Game Soundtracks</h2>
+            <p class="music__intro">I'm still learning and experimenting with music. These are a few tracks I've composed for my games that I'm ready to share. All three were created for Exsilva Project.</p>
+          </div>
+          <div class="soundtracks" id="soundtracks"></div>
+          <p class="music__status" id="music-status" role="status"></p>
         </div>
       </section>
 
@@ -211,9 +223,11 @@
     </script>
     <script src="./data/games.js?v=0b49d37ef3ac"></script>
     <script src="./assets/games.js?v=509465971962"></script>
-    <script src="./data/translations.js?v=f1dbd9fe2b91"></script>
-    <script src="./assets/language.js?v=5a7a1a3caee6"></script>
+    <script src="./data/translations.js?v=4e578012335e"></script>
+    <script src="./assets/language.js?v=2d24de122b36"></script>
     <script src="./assets/theme.js?v=d98b5a925136" defer></script>
     <script src="./assets/current-project.js?v=2623c6901d47" defer></script>
+    <script src="./data/music.js?v=1f5f3e3cdef5"></script>
+    <script src="./assets/music.js?v=6aef3bf11070" defer></script>
   </body>
 </html>
