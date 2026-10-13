@@ -1,17 +1,17 @@
 {
   "scene.wasm": {
-    "url": "Build/scene-b6cc4e5dfcc4.wasm.gz",
+    "url": "Build/scene-e22aba414b2c.wasm.gz",
     "type": "application/wasm",
-    "size": 16376807
+    "size": 16380719
   },
   "scene.framework.js": {
-    "url": "Build/scene-77ef28c2a1fe.framework.js.gz",
+    "url": "Build/scene-8d4faff2a38e.framework.js.gz",
     "type": "text/javascript",
-    "size": 88206
+    "size": 88422
   },
   "scene.data": {
-    "url": "Build/scene-77ca90fa0af3.data.gz",
+    "url": "Build/scene-cb33362008ae.data.gz",
     "type": "application/octet-stream",
-    "size": 10543794
+    "size": 10567212
   }
 }

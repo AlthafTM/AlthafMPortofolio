@@ -2,7 +2,7 @@
   "use strict";
   var stage = document.getElementById("prototype-stage");
   if (!stage) return;
-  var playerURL = new URL("../public/pixel-scene/player.html?v=manual-20261012", document.currentScript.src).href;
+  var playerURL = new URL("../public/pixel-scene/player.html?v=build-20261013", document.currentScript.src).href;
   var status = document.getElementById("prototype-status");
   var progress = document.getElementById("prototype-progress");
   var play = document.getElementById("prototype-play");
